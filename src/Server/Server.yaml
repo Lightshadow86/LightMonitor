@@ -1,0 +1,14 @@
+listen: ":80"
+node_uri: "/Monitor/Node"
+broad_uri: "/Monitor/Status"
+console_uri: "/Monitor/Console"
+token: "123456"
+
+database:
+  type: "sqlite" # 支持 mysql 或 sqlite，但MySQL没做
+  host: "127.0.0.1"
+  port: 3306
+  user: "root"
+  password: "password"
+  dbname: "example_db"
+  filepath: "LightMonitor.db"
