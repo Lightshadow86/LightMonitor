@@ -1,7 +1,8 @@
 #!/bin/bash
 
 #	GPT写的，凑合用把
-#	v0.1
+#	服辣！！
+#	v0.1.3
 #
 #			——Light__shadow
 
@@ -156,24 +157,25 @@ function install_lightmonitor() {
 
     # 获取用户输入的参数 (服务端或客户端)
     if [[ "$type" == "server" ]]; then
-		read -p "请输入监听端口 (默认为 712): " listen_port
+		read -p "请输入监听端口 (712): " listen_port
 		listen_port="${listen_port:-712}"
 		if [[ "$listen_port" =~ ^[0-9]+$ ]]; then
 			listen_port=":$listen_port"
 		fi
 		echo "监听端口: $listen_port"
-        read -p "请输入节点 API 路径 (默认为 /Monitor/Node): " node_uri
+        read -p "请输入节点 API 路径 (/Monitor/Node): " node_uri
+        node_uri="${node_uri:-"/Monitor/Node"}"
         echo "Node API 路径: $node_uri"
-        read -p "请输入广播 API 路径 (默认为 /Monitor/Status): " broad_uri
-        echo "广播 API 路径: $broad_uri"
+        read -p "请输入广播 API 路径 (/Monitor/Status): " broad_uri
         broad_uri="${broad_uri:-"/Monitor/Status"}"
-        read -p "请输入后台 API 路径 (默认为 /Monitor/Console): " console_uri
-        echo "后台 API 路径: $console_uri"
+        echo "广播 API 路径: $broad_uri"
+        read -p "请输入后台 API 路径 (/Monitor/Console): " console_uri
         console_uri="${console_uri:-"/Monitor/Console"}"
+        echo "后台 API 路径: $console_uri"
         while true; do
-            read -p "请输入管理 Token (不能为空): " token
+            read -p "请输入管理 Token: " token
             if [[ -n "$token" ]]; then
-				echo "节点 Token: $token"
+		echo "节点 Token: $token"
                 break
             fi
             echo "Token 不能为空，请重新输入。"
@@ -182,7 +184,7 @@ function install_lightmonitor() {
 
     elif [[ "$type" == "client" ]]; then
         while true; do
-			read -p "请输入 API URL 路径 (例如 ws://api.example.com/Monitor/Node): " url
+			read -p "请输入 API URL 路径 (例如 wss://api.example.com/Monitor/Node): " url
 			# 检查 URL 是否为空且以 ws:// 或 wss:// 开头
 			if [[ -n "$url" && ( "$url" =~ ^ws:// || "$url" =~ ^wss:// ) ]]; then
 				echo "API URL 路径: $url"
