@@ -162,6 +162,7 @@ function install_lightmonitor() {
 			listen_port=":$listen_port"
 		fi
 		echo "监听端口: $listen_port"
+        read -p "请输入节点 API 路径 (默认为 /Monitor/Node): " node_uri
         echo "Node API 路径: $node_uri"
         read -p "请输入广播 API 路径 (默认为 /Monitor/Status): " broad_uri
         echo "广播 API 路径: $broad_uri"
@@ -170,7 +171,7 @@ function install_lightmonitor() {
         echo "后台 API 路径: $console_uri"
         console_uri="${console_uri:-"/Monitor/Console"}"
         while true; do
-            read -p "请输入服务端 Token (不能为空): " token
+            read -p "请输入管理 Token (不能为空): " token
             if [[ -n "$token" ]]; then
 				echo "节点 Token: $token"
                 break
