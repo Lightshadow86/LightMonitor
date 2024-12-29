@@ -170,7 +170,7 @@ function install_lightmonitor() {
         echo "后台 API 路径: $console_uri"
         console_uri="${console_uri:-"/Monitor/Console"}"
         while true; do
-            read -p "请输入节点 Token (不能为空): " token
+            read -p "请输入服务端 Token (不能为空): " token
             if [[ -n "$token" ]]; then
 				echo "节点 Token: $token"
                 break
@@ -190,7 +190,7 @@ function install_lightmonitor() {
 			echo "URL 必须以 ws:// 或 wss:// 开始，请重新输入。"
 		done
         while true; do
-            read -p "请输入本节点的 Token: " token
+            read -p "请输入本节点连接的 Token: " token
             if [[ -n "$token" ]]; then
                 break
             fi
